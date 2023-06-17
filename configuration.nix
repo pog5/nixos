@@ -53,10 +53,15 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # Enable the GNOME Desktop Environment.
+  # Enable NVIDIA drivers 470xx
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
+  hardware.nvidia.modesetting.enable = true;
+
+  # Enable the GNOME Desktop Environment and remove useless stuff.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
@@ -111,15 +116,24 @@
     extraGroups = [ "networkmanager" "wheel" "libvirt" ];
     packages = with pkgs; [
       firefox
+      neofetch
 	  prismlauncher
+	  gnome3.gnome-tweaks
+	  #cli tools
 	  micro
 	  gitMinimal
+	  bat
+	  grc
 	  armcord
 	  blackbox-terminal
       gnomeExtensions.appindicator
+      gnomeExtensions.blur-my-shell
 	  gnomeExtensions.dash-to-dock
     ];
   };
+
+  # Disable sudo asking for password.
+  security.sudo.wheelNeedsPassword = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -127,17 +141,28 @@
   # Enable zsh config
   programs.zsh = {
   	enable = true;
+  	shellAliases = {
+  	  update = "sudo nixos-rebuild switch";
+  	  cat = "bat";
+  	};
   	ohMyZsh = {
    	  enable = true;
-      plugins = [ "command-not-found" ];
+      plugins = [ "command-not-found" "grc" ];
       theme = "alanpeabody";
     };
   };
+
+  # Install Steam
+  programs.steam = {
+  	enable = true;
+  	remotePlay.openFirewall = true;
+  	dedicatedServer.openFirewall = true;
+  };
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim 
-  #  wget
+    wineWowPackages.staging
     virt-manager
   ];
 
