@@ -116,14 +116,19 @@
     extraGroups = [ "networkmanager" "wheel" "libvirt" ];
     packages = with pkgs; [
       firefox
-      neofetch
+      vlc
 	  prismlauncher
 	  gnome3.gnome-tweaks
 	  #cli tools
 	  micro
+	  tmux
+      ffmpeg
+      wget
+      neofetch
 	  gitMinimal
 	  bat
 	  grc
+	  yt-dlp-light
 	  armcord
 	  blackbox-terminal
       gnomeExtensions.appindicator
@@ -144,6 +149,7 @@
   	shellAliases = {
   	  update = "sudo nixos-rebuild switch";
   	  cat = "bat";
+  	  tasks = "grc ps aux";
   	};
   	ohMyZsh = {
    	  enable = true;
