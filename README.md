@@ -2,6 +2,7 @@
 NixOS personal config files
 
 ### Neofetch:
+(from 17.06.2023)
 ```ansi
           ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖            nightly@nixos-thinkcent 
           ▜███▙       ▜███▙  ▟███▛            ----------------------- 
