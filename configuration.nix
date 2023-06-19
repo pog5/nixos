@@ -116,27 +116,28 @@
     extraGroups = [ "networkmanager" "wheel" "libvirt" ];
     packages = with pkgs; [
       firefox
-      vlc
-	  prismlauncher
-	  gnome3.gnome-tweaks
-	  #cli tools
-	  micro
-	  tmux
+          prismlauncher
+          gnome3.gnome-tweaks
+          #cli tools
+          micro
+          tmux
       ffmpeg
       wget
       neofetch
-	  gitMinimal
-	  bat
-	  grc
-	  yt-dlp-light
-	  armcord
-	  blackbox-terminal
+          gitMinimal
+          bat
+          grc
+          yt-dlp-light
+          armcord
+          celluloid
+          blackbox-terminal
       gnomeExtensions.appindicator
       gnomeExtensions.blur-my-shell
-	  gnomeExtensions.dash-to-dock
+          gnomeExtensions.dash-to-dock
     ];
   };
 
+  
   # Disable sudo asking for password.
   security.sudo.wheelNeedsPassword = false;
 
@@ -145,14 +146,14 @@
 
   # Enable zsh config
   programs.zsh = {
-  	enable = true;
-  	shellAliases = {
-  	  update = "sudo nixos-rebuild switch";
-  	  cat = "bat";
-  	  tasks = "grc ps aux";
-  	};
-  	ohMyZsh = {
-   	  enable = true;
+        enable = true;
+        shellAliases = {
+          update = "sudo nixos-rebuild switch";
+          cat = "bat";
+          tasks = "grc ps aux";
+        };
+        ohMyZsh = {
+          enable = true;
       plugins = [ "command-not-found" "grc" ];
       theme = "alanpeabody";
     };
@@ -160,9 +161,9 @@
 
   # Install Steam
   programs.steam = {
-  	enable = true;
-  	remotePlay.openFirewall = true;
-  	dedicatedServer.openFirewall = true;
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
   };
   
   # List packages installed in system profile. To search, run:
@@ -181,13 +182,13 @@
   # };
 
   services.udev.packages = with pkgs; [
-  	gnome.gnome-settings-daemon
+        gnome.gnome-settings-daemon
   ];
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
