@@ -116,24 +116,26 @@
     extraGroups = [ "networkmanager" "wheel" "libvirt" ];
     packages = with pkgs; [
       firefox
-          prismlauncher
-          gnome3.gnome-tweaks
-          #cli tools
-          micro
-          tmux
+	  prismlauncher
+	  libreoffice
+	  gnome3.gnome-tweaks
+	  #cli tools
+	  micro
+	  tmux
       ffmpeg
       wget
       neofetch
-          gitMinimal
-          bat
-          grc
-          yt-dlp-light
-          armcord
-          celluloid
-          blackbox-terminal
+	  gitMinimal
+	  bat
+	  grc
+	  yt-dlp-light
+	  armcord
+	  celluloid
+	  blackbox-terminal
       gnomeExtensions.appindicator
       gnomeExtensions.blur-my-shell
-          gnomeExtensions.dash-to-dock
+	  gnomeExtensions.dash-to-dock
+	  gnomeExtensions.media-controls
     ];
   };
 
@@ -146,14 +148,14 @@
 
   # Enable zsh config
   programs.zsh = {
-        enable = true;
-        shellAliases = {
-          update = "sudo nixos-rebuild switch";
-          cat = "bat";
-          tasks = "grc ps aux";
-        };
-        ohMyZsh = {
-          enable = true;
+  	enable = true;
+  	shellAliases = {
+  	  update = "sudo nixos-rebuild switch";
+  	  cat = "bat";
+  	  tasks = "grc ps aux";
+  	};
+  	ohMyZsh = {
+   	  enable = true;
       plugins = [ "command-not-found" "grc" ];
       theme = "alanpeabody";
     };
@@ -161,9 +163,9 @@
 
   # Install Steam
   programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true;
-        dedicatedServer.openFirewall = true;
+  	enable = true;
+  	remotePlay.openFirewall = true;
+  	dedicatedServer.openFirewall = true;
   };
   
   # List packages installed in system profile. To search, run:
@@ -171,6 +173,7 @@
   environment.systemPackages = with pkgs; [
     wineWowPackages.staging
     virt-manager
+	android-tools
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -182,7 +185,7 @@
   # };
 
   services.udev.packages = with pkgs; [
-        gnome.gnome-settings-daemon
+  	gnome.gnome-settings-daemon
   ];
 
   # List services that you want to enable:
