@@ -33,3 +33,16 @@ sudo nix-channel --add https://nixos.org/channels/nixpkgs-unstable
 sudo nix-channel --update
 sudo nixos-rebuild switch --upgrade
 ```
+
+### Themes/External stuff
+[Catppuccin Mocha Mauve for Firefox](https://github.com/catppuccin/firefox/releases/download/old/catppuccin_mocha_mauve.xpi)
+
+[Catppuccin for Micro](https://github.com/catppuccin/micro)
+
+[libadwaita for GTK3](https://github.com/lassekongo83/adw-gtk3)
+
+[Catppuccin for GTK](https://github.com/catppuccin/gtk)
+
+Gradience for Gnome-wide themeing: `nix-shell -p gradience --command gradience` (3 lines, Manage Presets)
+
+Screenshot of Gnome Tweaks's Appearance page: ![image](https://github.com/pog5/nixos/assets/62222436/bf035d8b-d5b1-4823-ad25-221531e48e6c)
