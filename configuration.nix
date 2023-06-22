@@ -171,9 +171,12 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wineWowPackages.staging
-    virt-manager
+	busybox
+	toybox
+	wineWowPackages.staging
+	virt-manager
 	android-tools
+	appimage-run
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
